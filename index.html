@@ -495,6 +495,21 @@
         fd.set('cleaning-qty',String(cMail.cq));
         fd.set('estimate-options',cMail.list.length ? cMail.list.join('、') : 'なし');
         fd.set('estimate-summary',mailLines.join(' / '));
+        /* Googleスプレッドシートへ予約データを保存 */
+        try{
+          const sheetData=new URLSearchParams();
+          sheetData.set('name',rf.elements['your-name'] ? rf.elements['your-name'].value : '');
+          sheetData.set('phone',rf.elements['your-tel'] ? rf.elements['your-tel'].value : '');
+          sheetData.set('email',rf.elements['your-email'] ? rf.elements['your-email'].value : '');
+          sheetData.set('address',(rf.elements['postal-code'] ? rf.elements['postal-code'].value : '')+' '+(rf.elements['your-address'] ? rf.elements['your-address'].value : ''));
+          sheetData.set('date1',(rf.elements['date-1'] ? rf.elements['date-1'].value : '')+' '+(rf.elements['time-1'] ? rf.elements['time-1'].value : ''));
+          sheetData.set('date2',(rf.elements['date-2'] ? rf.elements['date-2'].value : '')+' '+(rf.elements['time-2'] ? rf.elements['time-2'].value : ''));
+          sheetData.set('date3',(rf.elements['date-3'] ? rf.elements['date-3'].value : '')+' '+(rf.elements['time-3'] ? rf.elements['time-3'].value : ''));
+          sheetData.set('aircon_count',String(cMail.nq+cMail.cq));
+          sheetData.set('options',cMail.list.length ? cMail.list.join('、') : 'なし');
+          sheetData.set('total',String(cMail.a)+'円');
+          fetch('https://script.google.com/macros/s/'+'AKfycbwbAnf2NPUUoF75uiRJCxL6LCI1rcG8d_c7fQinnE9-mwgMnb3YTyqLjgRx4xb5mz8V'+'/exec',{method:'POST',mode:'no-cors',body:sheetData});
+        }catch(sheetError){ console.warn('Googleスプレッドシート保存エラー',sheetError); }
 
         for(let ui=1;ui<=unitCards.length;ui++){
           const place=document.getElementById('aeInstallPlace'+ui);
