@@ -508,7 +508,7 @@
           sheetData.set('aircon_count',String(cMail.nq+cMail.cq));
           sheetData.set('options',cMail.list.length ? cMail.list.join('、') : 'なし');
           sheetData.set('total',String(cMail.a)+'円');
-          fetch('https://script.google.com/macros/s/'+'AKfycbwbAnf2NPUUoF75uiRJCxL6LCI1rcG8d_c7fQinnE9-mwgMnb3YTyqLjgRx4xb5mz8V'+'/exec',{method:'POST',mode:'no-cors',body:sheetData});
+          await fetch('https://script.google.com/macros/s/AKfycbwbAnf2NPUUoF75uiRJCxL6LCI1rcG8d_c7fQinnE9-mwgMnb3YTyqLjgRx4xb5mz8V/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:sheetData.toString(),keepalive:true});
         }catch(sheetError){ console.warn('Googleスプレッドシート保存エラー',sheetError); }
 
         for(let ui=1;ui<=unitCards.length;ui++){
