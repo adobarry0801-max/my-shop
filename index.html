@@ -74,7 +74,7 @@
     <div class="ae-card">
       <p class="ae-title">① エアコンの台数</p>
       <div class="ae-row">
-        <span class="ae-label">通常タイプ <span class="ae-price">7,500円／台</span></span>
+        <span class="ae-label">通常タイプ <span class="ae-price">7,000円／台</span></span>
         <select id="aeNormalQty">
           <option value="0">なし</option><option value="1">1台</option><option value="2">2台</option><option value="3">3台</option><option value="4">4台</option><option value="5">5台</option> <option value="6">6台</option><option value="7">7台</option><option value="8">8台</option><option value="9">9台</option><option value="10">10台</option>
         </select>
@@ -135,7 +135,7 @@
 
     <div class="ae-total">
       <div class="ae-total-label">現在のお見積り</div>
-      <div class="ae-total-price" id="aeTotal">7,500円</div>
+      <div class="ae-total-price" id="aeTotal">7,000円</div>
       <div class="ae-total-note">税込・概算料金</div>
       <div style="margin-top:12px;background:#fff;color:#516856;border-radius:10px;padding:11px 12px;text-align:left;font-size:12px;line-height:1.7">こちらは【概算のご参考金額】です。実際の金額は作業前にスタッフがご確認します。追加費用が発生する場合は必ず事前にご説明いたします。</div>
     </div>
@@ -143,7 +143,7 @@
 <div id="aeDirectBooking" class="ae-booking-box">
   <div class="ae-card">
     <p class="ae-title">④ ご予約情報</p>
-    <div class="ae-selected-estimate">この内容でご予約<strong id="aeDirectTotal">7,500円</strong></div>
+    <div class="ae-selected-estimate">この内容でご予約<strong id="aeDirectTotal">7,000円</strong></div>
 
     <form id="aeReservationForm" novalidate>
       <input type="hidden" name="_wpcf7" value="312">
@@ -221,7 +221,7 @@
         <p class="ae-title">④ ご予約情報</p>
         <div class="ae-selected-estimate">
           この内容でご予約
-          <strong id="aeBookingTotal">7,500円</strong>
+          <strong id="aeBookingTotal">7,000円</strong>
         </div>
         <p class="ae-note" style="margin-bottom:14px">
           このフォームを送信した時点で受付完了です。LINEへの移動はありません。
@@ -296,7 +296,7 @@
 
   function calc(){
     const nq=+normal.value||0, cq=+cleaning.value||0, q=nq+cq;
-    let a=7500*nq+14000*cq;
+    let a=7000*nq+14000*cq;
     const list=[];
     opts.forEach(x=>{
       const n=+x.value||0;
